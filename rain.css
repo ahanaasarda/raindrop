@@ -1,0 +1,384 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #090c0d;
+}
+
+.rain-window {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #121817;
+}
+
+/* Warm lights far behind the glass */
+.background-lights {
+  position: absolute;
+  inset: -8%;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 22% 20%, #a66b24 0%, transparent 30%),
+    radial-gradient(ellipse at 68% 25%, #6e572c 0%, transparent 24%),
+    radial-gradient(ellipse at 45% 53%, #8e4c1c 0%, transparent 30%),
+    radial-gradient(ellipse at 28% 78%, #a35b1d 0%, transparent 28%),
+    linear-gradient(110deg, #101613, #373023 45%, #101716);
+  filter: blur(8px);
+  transform: scale(1.08);
+  animation: backgroundDrift 18s ease-in-out infinite alternate;
+}
+
+/* Individual blurred lights */
+.bokeh {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(13px);
+  opacity: 0.85;
+}
+
+.b1 {
+  left: 22%;
+  top: 5%;
+  width: 65px;
+  height: 160px;
+  background: #e3a63d;
+}
+
+.b2 {
+  left: 52%;
+  top: 12%;
+  width: 75px;
+  height: 100px;
+  background: #e8b75b;
+}
+
+.b3 {
+  left: 73%;
+  top: 18%;
+  width: 48px;
+  height: 115px;
+  background: #c27b29;
+}
+
+.b4 {
+  left: 61%;
+  top: 35%;
+  width: 90px;
+  height: 150px;
+  background: #bc762e;
+}
+
+.b5 {
+  left: 15%;
+  top: 48%;
+  width: 100px;
+  height: 180px;
+  background: #a75d1b;
+}
+
+.b6 {
+  left: 33%;
+  top: 60%;
+  width: 85px;
+  height: 140px;
+  background: #d38a2d;
+}
+
+.b7 {
+  left: 80%;
+  top: 55%;
+  width: 90px;
+  height: 170px;
+  background: #72512b;
+}
+
+.b8 {
+  left: 25%;
+  top: 85%;
+  width: 55px;
+  height: 120px;
+  background: #df9a30;
+}
+
+.b9 {
+  left: 45%;
+  top: 28%;
+  width: 32px;
+  height: 70px;
+  background: #ffe0a0;
+}
+
+.b10 {
+  left: 88%;
+  top: 7%;
+  width: 36px;
+  height: 80px;
+  background: #c78b38;
+}
+
+.b11 {
+  left: 5%;
+  top: 28%;
+  width: 45px;
+  height: 90px;
+  background: #85602f;
+}
+
+.b12 {
+  left: 53%;
+  top: 76%;
+  width: 65px;
+  height: 125px;
+  background: #9a6428;
+}
+
+.b13 {
+  left: 37%;
+  top: 12%;
+  width: 20px;
+  height: 55px;
+  background: #ffe0a0;
+}
+
+.b14 {
+  left: 68%;
+  top: 87%;
+  width: 55px;
+  height: 110px;
+  background: #d38c31;
+}
+
+@keyframes backgroundDrift {
+  from {
+    transform: scale(1.08) translateX(-8px);
+  }
+  to {
+    transform: scale(1.12) translateX(8px);
+  }
+}
+
+.rain-window {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(5, 8, 12, 0.12), rgba(5, 8, 12, 0.25)),
+    url("rain-window.jpg") center center / cover no-repeat;
+}
+
+/* Long, irregular trails of water */
+.water-streaks {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.water-streaks span {
+  position: absolute;
+  top: -15%;
+  width: 2px;
+  height: var(--length, 65vh);
+  border-radius: 50%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #d9e6df45 35%,
+    #ffffff85 50%,
+    #b6c8c555 75%,
+    transparent
+  );
+  box-shadow: 1px 0 3px #d6e1df25;
+  opacity: var(--opacity, 0.5);
+  animation: streakFlow var(--speed, 8s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.water-streaks span:nth-child(1) {
+  left: 5%; --length: 85vh; --speed: 11s; --delay: -6s;
+}
+.water-streaks span:nth-child(2) {
+  left: 11%; width: 3px; --length: 55vh; --speed: 7s; --delay: -3s;
+}
+.water-streaks span:nth-child(3) {
+  left: 17%; --length: 100vh; --speed: 13s; --delay: -9s;
+}
+.water-streaks span:nth-child(4) {
+  left: 23%; width: 3px; --length: 75vh; --speed: 9s; --delay: -4s;
+}
+.water-streaks span:nth-child(5) {
+  left: 29%; --length: 45vh; --speed: 8s; --delay: -5s;
+}
+.water-streaks span:nth-child(6) {
+  left: 35%; width: 3px; --length: 90vh; --speed: 12s; --delay: -8s;
+}
+.water-streaks span:nth-child(7) {
+  left: 41%; --length: 70vh; --speed: 9s; --delay: -2s;
+}
+.water-streaks span:nth-child(8) {
+  left: 47%; width: 3px; --length: 105vh; --speed: 14s; --delay: -10s;
+}
+.water-streaks span:nth-child(9) {
+  left: 53%; --length: 60vh; --speed: 8s; --delay: -5s;
+}
+.water-streaks span:nth-child(10) {
+  left: 59%; width: 3px; --length: 80vh; --speed: 10s; --delay: -7s;
+}
+.water-streaks span:nth-child(11) {
+  left: 65%; --length: 100vh; --speed: 12s; --delay: -3s;
+}
+.water-streaks span:nth-child(12) {
+  left: 71%; --length: 55vh; --speed: 7s; --delay: -6s;
+}
+.water-streaks span:nth-child(13) {
+  left: 77%; width: 3px; --length: 90vh; --speed: 11s; --delay: -8s;
+}
+.water-streaks span:nth-child(14) {
+  left: 83%; --length: 65vh; --speed: 9s; --delay: -4s;
+}
+.water-streaks span:nth-child(15) {
+  left: 89%; width: 3px; --length: 100vh; --speed: 13s; --delay: -11s;
+}
+.water-streaks span:nth-child(16) {
+  left: 95%; --length: 75vh; --speed: 8s; --delay: -5s;
+}
+.water-streaks span:nth-child(17) {
+  left: 8%; --length: 45vh; --speed: 7s; --delay: -2s;
+}
+.water-streaks span:nth-child(18) {
+  left: 32%; --length: 60vh; --speed: 10s; --delay: -7s;
+}
+.water-streaks span:nth-child(19) {
+  left: 68%; --length: 45vh; --speed: 8s; --delay: -4s;
+}
+.water-streaks span:nth-child(20) {
+  left: 92%; --length: 55vh; --speed: 9s; --delay: -6s;
+}
+
+@keyframes streakFlow {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+  }
+  100% {
+    transform: translateY(125vh) translateX(5px);
+  }
+}
+
+/* Small droplets on the glass */
+.water-drops {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.water-drops span {
+  position: absolute;
+  width: var(--size, 5px);
+  height: calc(var(--size, 5px) * 1.45);
+  border-radius: 60% 40% 55% 45%;
+  background: linear-gradient(
+    135deg,
+    #ffffffb8,
+    #d8e8e555 35%,
+    #ffffff0b 70%,
+    #ffffff80
+  );
+  border-left: 1px solid #ffffff66;
+  box-shadow: 1px 1px 2px #ffffff20;
+  animation: dropShimmer var(--duration, 3s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.water-drops span:nth-child(1)  { left: 4%; top: 7%; --size: 5px; --duration: 3s; }
+.water-drops span:nth-child(2)  { left: 9%; top: 23%; --size: 8px; --duration: 4s; }
+.water-drops span:nth-child(3)  { left: 14%; top: 49%; --size: 4px; --duration: 2s; }
+.water-drops span:nth-child(4)  { left: 20%; top: 12%; --size: 7px; --duration: 3s; }
+.water-drops span:nth-child(5)  { left: 25%; top: 35%; --size: 5px; --duration: 5s; }
+.water-drops span:nth-child(6)  { left: 30%; top: 72%; --size: 9px; --duration: 4s; }
+.water-drops span:nth-child(7)  { left: 36%; top: 19%; --size: 4px; --duration: 2s; }
+.water-drops span:nth-child(8)  { left: 41%; top: 45%; --size: 7px; --duration: 3s; }
+.water-drops span:nth-child(9)  { left: 46%; top: 8%; --size: 5px; --duration: 4s; }
+.water-drops span:nth-child(10) { left: 51%; top: 61%; --size: 8px; --duration: 3s; }
+.water-drops span:nth-child(11) { left: 56%; top: 29%; --size: 4px; --duration: 5s; }
+.water-drops span:nth-child(12) { left: 61%; top: 84%; --size: 6px; --duration: 3s; }
+.water-drops span:nth-child(13) { left: 66%; top: 13%; --size: 9px; --duration: 4s; }
+.water-drops span:nth-child(14) { left: 71%; top: 42%; --size: 5px; --duration: 2s; }
+.water-drops span:nth-child(15) { left: 76%; top: 68%; --size: 7px; --duration: 3s; }
+.water-drops span:nth-child(16) { left: 81%; top: 20%; --size: 4px; --duration: 5s; }
+.water-drops span:nth-child(17) { left: 86%; top: 51%; --size: 8px; --duration: 3s; }
+.water-drops span:nth-child(18) { left: 91%; top: 33%; --size: 5px; --duration: 4s; }
+.water-drops span:nth-child(19) { left: 96%; top: 76%; --size: 7px; --duration: 2s; }
+.water-drops span:nth-child(20) { left: 2%; top: 88%; --size: 4px; --duration: 4s; }
+.water-drops span:nth-child(21) { left: 18%; top: 83%; --size: 6px; --duration: 3s; }
+.water-drops span:nth-child(22) { left: 33%; top: 55%; --size: 5px; --duration: 5s; }
+.water-drops span:nth-child(23) { left: 48%; top: 91%; --size: 8px; --duration: 3s; }
+.water-drops span:nth-child(24) { left: 63%; top: 57%; --size: 4px; --duration: 2s; }
+.water-drops span:nth-child(25) { left: 78%; top: 8%; --size: 6px; --duration: 4s; }
+.water-drops span:nth-child(26) { left: 93%; top: 14%; --size: 9px; --duration: 3s; }
+.water-drops span:nth-child(27) { left: 12%; top: 65%; --size: 5px; --duration: 2s; }
+.water-drops span:nth-child(28) { left: 27%; top: 91%; --size: 7px; --duration: 4s; }
+.water-drops span:nth-child(29) { left: 44%; top: 32%; --size: 4px; --duration: 3s; }
+.water-drops span:nth-child(30) { left: 59%; top: 17%; --size: 6px; --duration: 5s; }
+.water-drops span:nth-child(31) { left: 74%; top: 91%; --size: 5px; --duration: 3s; }
+.water-drops span:nth-child(32) { left: 89%; top: 63%; --size: 8px; --duration: 4s; }
+.water-drops span:nth-child(33) { left: 7%; top: 39%; --size: 4px; --duration: 3s; }
+.water-drops span:nth-child(34) { left: 38%; top: 87%; --size: 6px; --duration: 2s; }
+.water-drops span:nth-child(35) { left: 54%; top: 43%; --size: 5px; --duration: 4s; }
+.water-drops span:nth-child(36) { left: 69%; top: 31%; --size: 7px; --duration: 3s; }
+.water-drops span:nth-child(37) { left: 84%; top: 86%; --size: 4px; --duration: 5s; }
+.water-drops span:nth-child(38) { left: 99%; top: 45%; --size: 6px; --duration: 3s; }
+.water-drops span:nth-child(39) { left: 23%; top: 58%; --size: 8px; --duration: 4s; }
+.water-drops span:nth-child(40) { left: 72%; top: 5%; --size: 5px; --duration: 2s; }
+.water-drops span:nth-child(41) { left: 40%; top: 6%; --size: 4px; --duration: 4s; }
+.water-drops span:nth-child(42) { left: 16%; top: 31%; --size: 7px; --duration: 3s; }
+.water-drops span:nth-child(43) { left: 58%; top: 75%; --size: 5px; --duration: 5s; }
+.water-drops span:nth-child(44) { left: 87%; top: 27%; --size: 8px; --duration: 3s; }
+.water-drops span:nth-child(45) { left: 3%; top: 56%; --size: 6px; --duration: 4s; }
+.water-drops span:nth-child(46) { left: 49%; top: 15%; --size: 5px; --duration: 2s; }
+.water-drops span:nth-child(47) { left: 95%; top: 92%; --size: 7px; --duration: 3s; }
+.water-drops span:nth-child(48) { left: 31%; top: 25%; --size: 4px; --duration: 5s; }
+
+@keyframes dropShimmer {
+  from {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0.95;
+    transform: translateY(4px);
+  }
+}
+
+/* Optional sound control */
+.sound-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+  padding: 10px 15px;
+  border: 1px solid #e9d6b955;
+  border-radius: 22px;
+  background: #111411bb;
+  color: #f9e9cb;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.sound-button:hover {
+  opacity: 1;
+  background: #29251f;
+}

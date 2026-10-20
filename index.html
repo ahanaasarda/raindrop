@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rain on Glass</title>
+  <link rel="stylesheet" href="rain.css">
+</head>
+<body>
+  <main class="rain-window">
+
+    <div class="background-lights">
+      <span class="bokeh b1"></span>
+      <span class="bokeh b2"></span>
+      <span class="bokeh b3"></span>
+      <span class="bokeh b4"></span>
+      <span class="bokeh b5"></span>
+      <span class="bokeh b6"></span>
+      <span class="bokeh b7"></span>
+      <span class="bokeh b8"></span>
+      <span class="bokeh b9"></span>
+      <span class="bokeh b10"></span>
+      <span class="bokeh b11"></span>
+      <span class="bokeh b12"></span>
+      <span class="bokeh b13"></span>
+      <span class="bokeh b14"></span>
+    </div>
+
+    <div class="dark-glass"></div>
+
+    <div class="water-streaks">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="water-drops">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <audio id="rain-sound" loop>
+      <source src="rain.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="sound-toggle" class="sound-button">
+      ♫ Rain sounds
+    </button>
+
+  </main>
+
+  <script>
+    const sound = document.getElementById("rain-sound");
+    const button = document.getElementById("sound-toggle");
+
+    button.addEventListener("click", async () => {
+      if (sound.paused) {
+        try {
+          await sound.play();
+          button.textContent = "♫ Pause rain";
+        } catch (error) {
+          button.textContent = "♫ Check rain.mp3";
+        }
+      } else {
+        sound.pause();
+        button.textContent = "♫ Rain sounds";
+      }
+    });
+  </script>
+</body>
+</html>
